@@ -60,6 +60,22 @@
       ]
     },
 
+    "playerId": {
+      "business_name": "Player",
+      "description": "Special case: playerId is a unique uuid only used internally. DO NOT USE THIS UNLESS SPECIFICALLY INSTRUCTED.",
+      "tables": [
+        "players.playerId"
+      ]
+    },
+
+    "loginId": {
+      "business_name": "Player",
+      "description": "Unique player identifier. Use this to join with Player_ID from other tables.",
+      "tables": [
+        "players.loginId"
+      ]
+    },
+
     "Player_ID": {
       "business_name": "Player",
       "description": "Unique player identifier.",
