@@ -37,7 +37,7 @@
 
     "first_deposits": {
       "business_name": "First Deposits",
-      "description": "Records on when the players first deposits. Do not use this table as much as possible."
+      "description": "Records on when the players first deposits.  DO NOT USE THIS TABLE UNLESS SPECIFICALLY INSTRUCTED."
     }
   },
 
@@ -54,7 +54,7 @@
 
     "createdDate": {
       "business_name": "Register Date",
-      "description": "Date the player registered",
+      "description": "Date the player registered. Player registration date.",
       "tables": [
         "players.createdDate"
       ]
@@ -62,7 +62,7 @@
 
     "playerId": {
       "business_name": "Player",
-      "description": "Special case: playerId is a unique uuid only used internally. DO NOT USE THIS UNLESS SPECIFICALLY INSTRUCTED.",
+      "description": "Special case: playerId is a unique uuid only used internally. DO NOT USE THIS FIELD UNLESS SPECIFICALLY INSTRUCTED.",
       "tables": [
         "players.playerId"
       ]
