@@ -1,0 +1,59 @@
+{
+  "Meeting": {
+    "business_name": "League",
+    "description": "Competition or tournament.",
+    "tables": [
+      "bet_details.Meeting",
+      "leagues.Meeting"
+    ]
+  },
+
+  "Bet_Amount": {
+    "business_name": "Wager",
+    "description": "Total Amount Bet",
+    "tables": [
+      "bets.Bet_Amount"
+    ]
+  },
+
+  "GGR": {
+    "business_name": "Gross Gaming Revenue",
+    "description": "Calculated as Bet Amount - Win Amount",
+    "tables": [
+      "bets.Bet_Amount",
+      "bets.Win_Amount"
+    ]
+  },
+  
+
+  "Ticket_ID": {
+    "business_name": "Bet Ticket",
+    "description": "Bet Ticket Identifier.",
+    "tables": [
+      "bet_details.Ticket_ID",
+      "bets.Ticket_ID"
+    ]
+  },
+
+  "Player_ID": {
+    "business_name": "Player",
+    "description": "Unique player identifier.",
+    "tables": [
+      "players.loginId",
+      "transactions.Player_ID",
+      "bets.Player_ID",
+      "games.Player_ID",
+      "player_transactions.Player_ID"
+    ]
+  },
+
+  "player_transactions": {
+    "business_name": "Player Transactions Summary",
+    "description": "Aggregated cache of transactions grouped by player and used for faster reporting."
+  },
+
+  "wagers": {
+    "business_name": "Wager Summary",
+    "description": "Aggregated cache of wagers grouped by Product_Group, Player_ID, and Date for reporting and analysis."
+  }
+}

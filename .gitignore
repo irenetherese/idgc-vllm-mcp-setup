@@ -1,0 +1,9 @@
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+
+# webui
+.webui_secret_key
+
+# logs
+*.log
