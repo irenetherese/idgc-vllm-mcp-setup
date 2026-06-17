@@ -52,6 +52,22 @@
       ]
     },
 
+    "Discipline": {
+      "business_name": "Sport",
+      "description": "Name of the discipline or sport.",
+      "tables": [
+        "bet_details.Discipline"
+      ]
+    },
+
+    "Event": {
+      "business_name": "Match",
+      "description": "Name of the specific match or event.",
+      "tables": [
+        "bet_details.Event"
+      ]
+    },
+
     "createdDate": {
       "business_name": "Register Date",
       "description": "Date the player registered. Player registration date.",
