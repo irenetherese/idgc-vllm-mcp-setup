@@ -74,6 +74,20 @@
         "bet_details.Ticket_ID",
         "bets.Ticket_ID"
       ]
+    },
+
+    "Product_Group": {
+      "business_name": "Product Group",
+      "description": "Category.",
+      "tables": [
+        "wagers.Product_Group"
+      ],
+      "allowed_values": [
+        {"value": "Sportsbook", "description": "Sports"},
+        {"value": "Casino", "description": "Casino"},
+        {"value": "Slots", "description": "Slots"},
+        {"value": "P2p", "description": "Poker"}
+      ]
     }
   }
 }
