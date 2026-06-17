@@ -33,6 +33,11 @@
     "players": {
       "business_name": "Players",
       "description": "Player master table. Note: playerId is a unique uuid only used internally, loginId is the actual Player_ID."
+    },
+
+    "first_deposits": {
+      "business_name": "First Deposits",
+      "description": "Records on when the players first deposits. Do not use this table as much as possible."
     }
   },
 
@@ -44,6 +49,14 @@
       "tables": [
         "bet_details.Meeting",
         "leagues.Meeting"
+      ]
+    },
+
+    "createdDate": {
+      "business_name": "Register Date",
+      "description": "Date the player registered",
+      "tables": [
+        "players.createdDate"
       ]
     },
 
@@ -87,6 +100,19 @@
         {"value": "Casino", "description": "Casino"},
         {"value": "Slots", "description": "Slots"},
         {"value": "P2p", "description": "Poker"}
+      ]
+    },
+
+    "Transaction_Type": {
+      "business_name": "Transaction Type",
+      "description": "Transaction Category.",
+      "tables": [
+        "transactions.Transaction_Type"
+      ],
+      "allowed_values": [
+        {"value": "WITHDRAWAL", "description": "Withdrawal Transaction"},
+        {"value": "DEPOSIT", "description": "Deposit Transaction"},
+        {"value": "REBATE", "description": "Rebate or Bonus Transaction"}
       ]
     }
   }
