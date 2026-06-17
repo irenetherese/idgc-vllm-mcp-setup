@@ -70,7 +70,7 @@
 
     "loginId": {
       "business_name": "Player",
-      "description": "Unique player identifier. Use this to join with Player_ID from other tables.",
+      "description": "Unique player identifier. Use this field to join with Player_ID from other tables.",
       "tables": [
         "players.loginId"
       ]
@@ -80,7 +80,6 @@
       "business_name": "Player",
       "description": "Unique player identifier.",
       "tables": [
-        "players.loginId",
         "transactions.Player_ID",
         "bets.Player_ID",
         "games.Player_ID",
