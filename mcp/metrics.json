@@ -1,0 +1,29 @@
+{
+  "GGR": {
+    "business_name": "Gross Gaming Revenue",
+    "description": "Bet amount minus win amount.",
+    "formula": "Bet_Amount - Win_Amount",
+    "columns": [
+      "bets.Bet_Amount",
+      "bets.Win_Amount"
+    ]
+  },
+
+  "Turnover": {
+    "business_name": "Turnover",
+    "description": "Total amount wagered.",
+    "formula": "SUM(Bet_Amount)",
+    "columns": [
+      "bets.Bet_Amount"
+    ]
+  },
+
+  "Win Amount": {
+    "business_name": "Player Winnings",
+    "description": "Total amount won by players.",
+    "formula": "SUM(Win_Amount)",
+    "columns": [
+      "bets.Win_Amount"
+    ]
+  }
+}
