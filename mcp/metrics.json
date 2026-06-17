@@ -5,7 +5,10 @@
     "formula": "Bet_Amount - Win_Amount",
     "columns": [
       "bets.Bet_Amount",
-      "bets.Win_Amount"
+      "bets.Win_Amount",
+      "games.Real_Bet_Amount",
+      "games.Real_Win_Amount",
+      "games.Net_Gaming_Revenue"
     ]
   },
 

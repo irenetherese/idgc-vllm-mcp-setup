@@ -7,17 +7,27 @@
 
     "wagers": {
       "business_name": "Wager Summary",
-      "description": "Aggregated wagers grouped by Product_Group, Player_ID and Date."
+      "description": "Aggregated wagers grouped by Product_Group, Player_ID and Date. This data already includes both sports bets and game bets."
     },
 
     "bets": {
-      "business_name": "Bet Transactions",
-      "description": "Individual betting records."
+      "business_name": "Sports Bet Transactions",
+      "description": "Individual betting records for sports."
     },
 
     "bet_details": {
-      "business_name": "Bet Transaction Details",
-      "description": "Individual bet details for each bet - join using Ticket_ID."
+      "business_name": "Sports Bet Transaction Details",
+      "description": "Individual bet details for each sports bet - join using Ticket_ID."
+    },
+
+    "games": {
+      "business_name": "Games Transactions",
+      "description": "Individual betting records for games aggregated by player, game, and date. Including games for Casino, Slots, Poker etc."
+    },
+
+    "game_types": {
+      "business_name": "Game Types",
+      "description": "Game descriptions"
     },
 
     "players": {
