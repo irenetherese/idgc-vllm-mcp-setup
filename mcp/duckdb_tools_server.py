@@ -37,16 +37,6 @@ def load_metrics():
 
 
 #
-# Metadata
-#
-@mcp.tool()
-def get_metadata():
-    """
-    Return business metadata for tables and columns.
-    """
-    return load_metadata()
-
-#
 # Tables
 #
 @mcp.tool()

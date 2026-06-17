@@ -32,7 +32,7 @@
 
     "players": {
       "business_name": "Players",
-      "description": "Player master table."
+      "description": "Player master table. Note: playerId is a unique uuid only used internally, loginId is the actual Player_ID."
     }
   },
 
