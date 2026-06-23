@@ -51,7 +51,14 @@
         "leagues.Meeting"
       ]
     },
-
+    "Live": {
+      "business_name": "Is Live",
+      "description": "Determines whether or not he bet was made during a live match.",
+      "tables": [
+        "bet_details.Is_Live",
+        "bets.Is_Live"
+      ]
+    },
     "Discipline": {
       "business_name": "Sport",
       "description": "Name of the discipline or sport.",
