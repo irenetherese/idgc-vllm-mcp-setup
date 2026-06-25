@@ -5,16 +5,16 @@ from pathlib import Path
 import duckdb
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("duckdb-tools")
+mcp = FastMCP("optimove-data-duckdb-tools")
 
-DUCKDB_PATH = os.environ["GAMING_DATA_ANALYTICS_DB_PATH"]
+DUCKDB_PATH = os.environ["OPTIMOVE_ANALYTICS_DB_PATH"]
 
 METADATA_PATH = Path(
-    os.environ["GAMING_DATA_ANALYTICS_METADATA"]
+    os.environ["OPTIMOVE_ANALYTICS_METADATA"]
 )
 
 METRICS_PATH = Path(
-    os.environ["GAMING_DATA_ANALYTICS_METRICS"]
+    os.environ["OPTIMOVE_ANALYTICS_METRICS"]
 )
 
 
