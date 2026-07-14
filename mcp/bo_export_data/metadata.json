@@ -1,0 +1,878 @@
+{
+  "tables": {
+    "sp_wagerenquiry_product_report_casino_0_bet_time": {
+      "business_name": "Casino Wager Transactions",
+      "description": "Individual casino game wager records, including table games and live casino. Aggregated and separated by betting time."
+    },
+    "sp_wagerenquiry_product_report_slot_0_bet_time": {
+      "business_name": "Slot Wager Transactions",
+      "description": "Individual slot machine wager records from slot games. Aggregated and separated by betting time."
+    },
+    "sp_wagerenquiry_product_report_p2p_0_bet_time": {
+      "business_name": "P2P/Poker Wager Transactions",
+      "description": "Individual peer-to-peer poker wager records. Aggregated and separated by betting time."
+    },
+    "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time": {
+      "business_name": "Sportsbook Bet Transactions",
+      "description": "Individual sports betting records with detailed sports market and selection information. Aggregated and separated by betting time."
+    },
+    "sp_bonus_report_freebet_bonus": {
+      "business_name": "Freebet Bonus Report",
+      "description": "Records of freebet bonus issuance to players, including bonus amount and claim details."
+    },
+    "sp_bonus_report_product": {
+      "business_name": "Product Bonus Report",
+      "description": "Records of product-specific bonus issuance, tied to particular game products."
+    },
+    "sp_bonus_report_promo_code": {
+      "business_name": "Promo Code Bonus Report",
+      "description": "Records of bonus issuance through promotional codes."
+    },
+    "sp_bonus_report_rebates": {
+      "business_name": "Rebates Report",
+      "description": "Records of player rebate bonuses issued as rewards for wagering volume."
+    },
+    "sp_bonus_report_reward": {
+      "business_name": "Reward Bonus Report",
+      "description": "General reward bonus issuance records issued to players from providers."
+    },
+    "sp_aff_product_report": {
+      "business_name": "Affiliate Product Summary",
+      "description": "Aggregated affiliate commission report by affiliate code and purpose, showing turnover and profit/loss."
+    },
+    "sp_aff_product_report_sub_channel": {
+      "business_name": "Affiliate Sub-Channel Product Summary",
+      "description": "Aggregated affiliate report broken down by sub-channel and player, showing turnover and win/loss per sub-channel."
+    },
+    "sp_aff_promote_report": {
+      "business_name": "Affiliate Promotion Summary",
+      "description": "Affiliate promotional performance summary including clicks, registrations, and deposit conversion rates."
+    },
+    "sp_aff_promote_report_sub_channel": {
+      "business_name": "Affiliate Sub-Channel Promotion Summary",
+      "description": "Affiliate promotional performance broken down by sub-channel, showing clicks, registrations, betting players, and deposit conversion."
+    },
+    "sp_individual_aff_report_ticket": {
+      "business_name": "Individual Affiliate Ticket Report",
+      "description": "Detailed per-ticket affiliate commission breakdown, including all bonus, rebate, and commission calculations for each bet ticket."
+    },
+    "sp_php_playercashdeposit_all": {
+      "business_name": "Player Cash Deposits",
+      "description": "Complete player deposit transaction records, including gateway details, charges, and processing status."
+    },
+    "sp_php_playercashwithdrawal_all": {
+      "business_name": "Player Cash Withdrawals",
+      "description": "Complete player withdrawal transaction records, including banking details, fraud checks, and processing status."
+    },
+    "sp_php_affdeposit_all": {
+      "business_name": "Affiliate Deposits",
+      "description": "Affiliate-related deposit records tracking wallet transfers between affiliate accounts."
+    },
+    "sp_first_deposit_report": {
+      "business_name": "First Deposit Report",
+      "description": "Records of players' first deposits, including registration date, IP, and account status."
+    }
+  },
+  "columns": {
+    "player_game_id": {
+      "business_name": "Player",
+      "description": "Unique player game identifier. Use this to identify players across wager, deposit, withdrawal, and bonus tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.player_game_id",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.player_game_id",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.player_game_id",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.player_game_id",
+        "sp_bonus_report_freebet_bonus.player_game_id",
+        "sp_bonus_report_product.player_game_id",
+        "sp_bonus_report_promo_code.player_game_id",
+        "sp_bonus_report_rebates.player_game_id",
+        "sp_bonus_report_reward.player_game_id",
+        "sp_aff_product_report_sub_channel.player_game_id",
+        "sp_php_playercashdeposit_all.player_game_id",
+        "sp_php_playercashwithdrawal_all.player_game_id"
+      ]
+    },
+    "player_id": {
+      "business_name": "Player ID",
+      "description": "Internal player database identifier. Use login_id or player_game_id for cross-referencing with other systems.",
+      "tables": [
+        "sp_first_deposit_report.player_id"
+      ]
+    },
+    "login_id": {
+      "business_name": "Login ID",
+      "description": "Player login identifier. Maps to player_game_id for cross-referencing with other tables.",
+      "tables": [
+        "sp_first_deposit_report.login_id"
+      ]
+    },
+    "stake": {
+      "business_name": "Wager",
+      "description": "Amount wagered on a single bet or game round. All wager report tables share this column.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.stake",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.stake",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.stake",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.stake"
+      ]
+    },
+    "payout": {
+      "business_name": "Payout",
+      "description": "Amount paid out to the player for a winning bet or game round. All wager report tables share this column.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.payout",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.payout",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.payout",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.payout"
+      ]
+    },
+    "player_w_l": {
+      "business_name": "Player Win/Loss",
+      "description": "Player win or loss amount for the bet/game. Negative means player lost (house won). Common across wagers and reports.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.player_w_l",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.player_w_l",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.player_w_l",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.player_w_l",
+        "sp_aff_product_report.player_w_l",
+        "sp_aff_product_report_sub_channel.player_w_l"
+      ]
+    },
+    "rake": {
+      "business_name": "Rake (House Take)",
+      "description": "Commission or rake taken by the house on each wager. Present across all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.rake",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.rake",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.rake",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.rake",
+        "sp_individual_aff_report_ticket.rake"
+      ]
+    },
+    "sport": {
+      "business_name": "Sport",
+      "description": "Name of the sport being bet on. Only available in sportsbook wager reports.",
+      "tables": [
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.sport"
+      ],
+      "allowed_values": [
+        {
+          "value": "Basketball",
+          "description": "Basketball"
+        },
+        {
+          "value": "Soccer",
+          "description": "Football/Soccer"
+        },
+        {
+          "value": "Baseball",
+          "description": "Baseball"
+        }
+      ]
+    },
+    "league": {
+      "business_name": "League/Competition",
+      "description": "Competition or tournament. Only available in sportsbook wager reports.",
+      "tables": [
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.league"
+      ]
+    },
+    "match": {
+      "business_name": "Match/Event",
+      "description": "Specific match or event being bet on. Only available in sportsbook wager reports.",
+      "tables": [
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.match"
+      ]
+    },
+    "market": {
+      "business_name": "Market",
+      "description": "Betting market selection. Only available in sportsbook wager reports.",
+      "tables": [
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.market"
+      ]
+    },
+    "selection": {
+      "business_name": "Selection",
+      "description": "Player's specific bet selection within a market. Only available in sportsbook wager reports.",
+      "tables": [
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.selection"
+      ]
+    },
+    "odds": {
+      "business_name": "Odds",
+      "description": "Bet odds at the time of placement. Only available in sportsbook wager reports.",
+      "tables": [
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.odds"
+      ]
+    },
+    "market_type": {
+      "business_name": "Market Type",
+      "description": "Type of bet market, e.g. Live or Prematch. Only available in sportsbook wager reports.",
+      "tables": [
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.market_type"
+      ],
+      "allowed_values": [
+        {
+          "value": "Live",
+          "description": "Live/bet during the match"
+        },
+        {
+          "value": "Prematch",
+          "description": "Prematch/bet before the match started"
+        }
+      ]
+    },
+    "bet_status": {
+      "business_name": "Bet Result",
+      "description": "Outcome of the bet. Only available in sportsbook wager reports.",
+      "tables": [
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.bet_status"
+      ],
+      "allowed_values": [
+        {
+          "value": "Win",
+          "description": "Bet won"
+        },
+        {
+          "value": "Lose",
+          "description": "Bet lost"
+        },
+        {
+          "value": "Push",
+          "description": "Bet pushed/staked returned"
+        },
+        {
+          "value": "PushHalf",
+          "description": "Half of bet pushed"
+        },
+        {
+          "value": "Void",
+          "description": "Bet voided"
+        },
+        {
+          "value": "LoseHalf",
+          "description": "Half of bet lost"
+        }
+      ]
+    },
+    "provider_bet_id": {
+      "business_name": "Provider Bet ID",
+      "description": "Unique bet identifier from the game provider. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.provider_bet_id",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.provider_bet_id",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.provider_bet_id",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.provider_bet_id"
+      ]
+    },
+    "bet_time": {
+      "business_name": "Bet Time",
+      "description": "Timestamp when the bet was placed. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.bet_time",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.bet_time",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.bet_time",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.bet_time"
+      ]
+    },
+    "settlement_time": {
+      "business_name": "Settlement Time",
+      "description": "Timestamp when the bet was settled. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.settlement_time",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.settlement_time",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.settlement_time",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.settlement_time"
+      ]
+    },
+    "provider": {
+      "business_name": "Game Provider",
+      "description": "Game provider or software supplier name. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.provider",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.provider",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.provider",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.provider"
+      ]
+    },
+    "game": {
+      "business_name": "Game",
+      "description": "Game name. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.game",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.game",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.game",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.game"
+      ]
+    },
+    "channel_type": {
+      "business_name": "Channel Type",
+      "description": "Platform channel (Online/WAP). Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.channel_type",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.channel_type",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.channel_type",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.channel_type"
+      ]
+    },
+    "bonus_amount": {
+      "business_name": "Bonus Amount",
+      "description": "Amount of bonus issued to the player. Common across all bonus report tables.",
+      "tables": [
+        "sp_bonus_report_freebet_bonus.bonus_amount",
+        "sp_bonus_report_product.bonus_amount",
+        "sp_bonus_report_promo_code.bonus_amount",
+        "sp_bonus_report_rebates.bonus_amount",
+        "sp_bonus_report_reward.bonus_amount"
+      ]
+    },
+    "bonus_type": {
+      "business_name": "Bonus Type",
+      "description": "Category of bonus. Common across all bonus report tables. Use the table name to differentiate bonus types.",
+      "tables": [
+        "sp_bonus_report_freebet_bonus.bonus_type",
+        "sp_bonus_report_product.bonus_type",
+        "sp_bonus_report_promo_code.bonus_type",
+        "sp_bonus_report_rebates.bonus_type",
+        "sp_bonus_report_reward.bonus_type"
+      ]
+    },
+    "bonus_name": {
+      "business_name": "Bonus Name",
+      "description": "Specific bonus identifier name. Common across all bonus report tables.",
+      "tables": [
+        "sp_bonus_report_freebet_bonus.bonus_name",
+        "sp_bonus_report_product.bonus_name",
+        "sp_bonus_report_promo_code.bonus_name",
+        "sp_bonus_report_rebates.bonus_name",
+        "sp_bonus_report_reward.bonus_name"
+      ]
+    },
+    "provider_name": {
+      "business_name": "Provider Name",
+      "description": "Game provider associated with the bonus. Common across all bonus report tables.",
+      "tables": [
+        "sp_bonus_report_freebet_bonus.provider_name",
+        "sp_bonus_report_product.provider_name",
+        "sp_bonus_report_promo_code.provider_name",
+        "sp_bonus_report_rebates.provider_name",
+        "sp_bonus_report_reward.provider_name"
+      ]
+    },
+    "claimed_time": {
+      "business_name": "Claimed Time",
+      "description": "Timestamp when the bonus was claimed by the player. Common across all bonus report tables.",
+      "tables": [
+        "sp_bonus_report_freebet_bonus.claimed_time",
+        "sp_bonus_report_product.claimed_time",
+        "sp_bonus_report_promo_code.claimed_time",
+        "sp_bonus_report_rebates.claimed_time",
+        "sp_bonus_report_reward.claimed_time"
+      ]
+    },
+    "promotion_period_start": {
+      "business_name": "Promotion Period Start",
+      "description": "Start date of the promotion campaign. Common across all bonus report tables.",
+      "tables": [
+        "sp_bonus_report_freebet_bonus.promotion_period_start",
+        "sp_bonus_report_product.promotion_period_start",
+        "sp_bonus_report_promo_code.promotion_period_start",
+        "sp_bonus_report_rebates.promotion_period_start",
+        "sp_bonus_report_reward.promotion_period_start"
+      ]
+    },
+    "promotion_period_end": {
+      "business_name": "Promotion Period End",
+      "description": "End date of the promotion campaign. Common across all bonus report tables.",
+      "tables": [
+        "sp_bonus_report_freebet_bonus.promotion_period_end",
+        "sp_bonus_report_product.promotion_period_end",
+        "sp_bonus_report_promo_code.promotion_period_end",
+        "sp_bonus_report_rebates.promotion_period_end",
+        "sp_bonus_report_reward.promotion_period_end"
+      ]
+    },
+    "transaction_id": {
+      "business_name": "Transaction ID",
+      "description": "Unique transaction identifier. Used in bonus reports and deposit/withdrawal records.",
+      "tables": [
+        "sp_bonus_report_freebet_bonus.transaction_id",
+        "sp_bonus_report_product.transaction_id",
+        "sp_bonus_report_promo_code.transaction_id",
+        "sp_bonus_report_rebates.transaction_id",
+        "sp_bonus_report_reward.transaction_id"
+      ]
+    },
+    "deposit_id": {
+      "business_name": "Deposit ID",
+      "description": "Unique deposit transaction identifier.",
+      "tables": [
+        "sp_php_playercashdeposit_all.deposit_id",
+        "sp_php_affdeposit_all.deposit_id"
+      ]
+    },
+    "actual_amount": {
+      "business_name": "Actual Amount",
+      "description": "Actual processed amount for deposits and withdrawals.",
+      "tables": [
+        "sp_php_playercashdeposit_all.actual_amount",
+        "sp_php_affdeposit_all.actual_amount",
+        "sp_php_playercashwithdrawal_all.actual_amount"
+      ]
+    },
+    "request_amount": {
+      "business_name": "Request Amount",
+      "description": "Requested amount for deposits and withdrawals, before processing adjustments.",
+      "tables": [
+        "sp_php_playercashdeposit_all.request_amount",
+        "sp_php_affdeposit_all.request_amount",
+        "sp_php_playercashwithdrawal_all.request_amount"
+      ]
+    },
+    "deposit_channel": {
+      "business_name": "Deposit Channel",
+      "description": "Deposit method or payment channel used.",
+      "tables": [
+        "sp_php_playercashdeposit_all.deposit_channel",
+        "sp_php_affdeposit_all.deposit_channel"
+      ]
+    },
+    "deposit_type": {
+      "business_name": "Deposit Type",
+      "description": "Type of deposit transaction.",
+      "tables": [
+        "sp_php_playercashdeposit_all.deposit_type",
+        "sp_php_affdeposit_all.deposit_type"
+      ]
+    },
+    "gateway_id": {
+      "business_name": "Payment Gateway ID",
+      "description": "Payment gateway identifier for the deposit transaction.",
+      "tables": [
+        "sp_php_playercashdeposit_all.gateway_id"
+      ]
+    },
+    "merchant_provider": {
+      "business_name": "Merchant Provider",
+      "description": "Payment service merchant or provider name.",
+      "tables": [
+        "sp_php_playercashdeposit_all.merchant_provider"
+      ]
+    },
+    "bank_name": {
+      "business_name": "Bank Name",
+      "description": "Bank name for the transaction.",
+      "tables": [
+        "sp_php_playercashdeposit_all.bank_name",
+        "sp_php_playercashwithdrawal_all.bank_name"
+      ]
+    },
+    "account_name": {
+      "business_name": "Account Name",
+      "description": "Account holder name for the transaction.",
+      "tables": [
+        "sp_php_playercashdeposit_all.account_name",
+        "sp_php_playercashwithdrawal_all.account_name"
+      ]
+    },
+    "method": {
+      "business_name": "Payment Method",
+      "description": "Payment method name for deposit transactions.",
+      "tables": [
+        "sp_php_playercashdeposit_all.method"
+      ]
+    },
+    "gateway_amount": {
+      "business_name": "Gateway Amount",
+      "description": "Amount reported by the payment gateway, may differ from request amount due to currency conversion.",
+      "tables": [
+        "sp_php_playercashdeposit_all.gateway_amount"
+      ]
+    },
+    "bank_charge": {
+      "business_name": "Bank Charge",
+      "description": "Additional bank fees charged on deposits.",
+      "tables": [
+        "sp_php_playercashdeposit_all.bank_charge"
+      ]
+    },
+    "withdrawal_id": {
+      "business_name": "Withdrawal ID",
+      "description": "Unique withdrawal transaction identifier.",
+      "tables": [
+        "sp_php_playercashwithdrawal_all.withdrawal_id"
+      ]
+    },
+    "deposit_refund": {
+      "business_name": "Deposit Refund",
+      "description": "Amount refunded from deposits.",
+      "tables": [
+        "sp_php_playercashdeposit_all.deposit_refund"
+      ]
+    },
+    "register_date": {
+      "business_name": "Registration Date",
+      "description": "Date when the player registered their account.",
+      "tables": [
+        "sp_first_deposit_report.register_date"
+      ]
+    },
+    "register_ip": {
+      "business_name": "Registration IP",
+      "description": "IP address used when player registered.",
+      "tables": [
+        "sp_first_deposit_report.register_ip"
+      ]
+    },
+    "approved_amount": {
+      "business_name": "Approved Amount",
+      "description": "Approved deposit amount for first deposit.",
+      "tables": [
+        "sp_first_deposit_report.approved_amount"
+      ]
+    },
+    "approved_date": {
+      "business_name": "Approved Date",
+      "description": "Date when the first deposit was approved.",
+      "tables": [
+        "sp_first_deposit_report.approved_date"
+      ]
+    },
+    "aff_code": {
+      "business_name": "Affiliate Code",
+      "description": "Affiliate partner identifier code.",
+      "tables": [
+        "sp_aff_product_report.aff_code",
+        "sp_aff_promote_report.aff_code",
+        "sp_individual_aff_report_ticket.aff_code"
+      ]
+    },
+    "aff_type": {
+      "business_name": "Affiliate Type",
+      "description": "Type of affiliate partner (e.g. 'P' for player, 'G' for group).",
+      "tables": [
+        "sp_aff_promote_report.aff_type",
+        "sp_individual_aff_report_ticket.aff_type"
+      ]
+    },
+    "aff_purpose": {
+      "business_name": "Affiliate Purpose",
+      "description": "Affiliate traffic source purpose (Internal, External).",
+      "tables": [
+        "sp_aff_product_report.aff_purpose",
+        "sp_aff_promote_report.aff_purpose",
+        "sp_individual_aff_report_ticket.aff_purpose"
+      ]
+    },
+    "turnover": {
+      "business_name": "Turnover",
+      "description": "Total amount wagered, reported at affiliate summary level.",
+      "tables": [
+        "sp_aff_product_report.turnover",
+        "sp_aff_product_report_sub_channel.turnover",
+        "sp_aff_promote_report_sub_channel.turnover",
+        "sp_individual_aff_report_ticket.turnover"
+      ]
+    },
+    "bet_player": {
+      "business_name": "Betting Players",
+      "description": "Count of active betting players associated with the affiliate.",
+      "tables": [
+        "sp_aff_product_report.bet_player",
+        "sp_aff_promote_report_sub_channel.bet_player"
+      ]
+    },
+    "click": {
+      "business_name": "Clicks",
+      "description": "Number of clicks from the affiliate promotion.",
+      "tables": [
+        "sp_aff_promote_report.click",
+        "sp_aff_promote_report_sub_channel.click"
+      ]
+    },
+    "register": {
+      "business_name": "Registrations",
+      "description": "Number of player registrations from the affiliate promotion.",
+      "tables": [
+        "sp_aff_promote_report.register",
+        "sp_aff_promote_report_sub_channel.register"
+      ]
+    },
+    "register_click_percent": {
+      "business_name": "Registration-to-Click Rate",
+      "description": "Percentage of clicks that resulted in player registration.",
+      "tables": [
+        "sp_aff_promote_report.register_click_percent",
+        "sp_aff_promote_report_sub_channel.register_click_percent"
+      ]
+    },
+    "new_deposit": {
+      "business_name": "New Deposits",
+      "description": "Number or amount of new deposits from the affiliate.",
+      "tables": [
+        "sp_aff_promote_report.new_deposit",
+        "sp_aff_promote_report_sub_channel.new_deposit"
+      ]
+    },
+    "sub_channel": {
+      "business_name": "Sub-Channel",
+      "description": "Sub-channel or landing page for the affiliate promotion.",
+      "tables": [
+        "sp_aff_product_report_sub_channel.sub_channel",
+        "sp_aff_promote_report_sub_channel.sub_channel"
+      ]
+    },
+    "company_w_l": {
+      "business_name": "Company Win/Loss",
+      "description": "Company/house profit or loss for the affiliate segment.",
+      "tables": [
+        "sp_individual_aff_report_ticket.company_w_l"
+      ]
+    },
+    "final_commission": {
+      "business_name": "Final Commission",
+      "description": "Final calculated commission payout for the affiliate.",
+      "tables": [
+        "sp_individual_aff_report_ticket.final_commission"
+      ]
+    },
+    "ticket_no": {
+      "business_name": "Ticket Number",
+      "description": "Individual bet ticket reference number.",
+      "tables": [
+        "sp_individual_aff_report_ticket.ticket_no"
+      ]
+    },
+    "source_file": {
+      "business_name": "Source File",
+      "description": "Original BO export file name. Common to all export tables for traceability.",
+      "tables": [
+        "sp_aff_product_report.source_file",
+        "sp_aff_product_report_sub_channel.source_file",
+        "sp_aff_promote_report.source_file",
+        "sp_aff_promote_report_sub_channel.source_file",
+        "sp_bonus_report_freebet_bonus.source_file",
+        "sp_bonus_report_product.source_file",
+        "sp_bonus_report_promo_code.source_file",
+        "sp_bonus_report_rebates.source_file",
+        "sp_bonus_report_reward.source_file",
+        "sp_first_deposit_report.source_file",
+        "sp_individual_aff_report_ticket.source_file",
+        "sp_php_affdeposit_all.source_file",
+        "sp_php_playercashdeposit_all.source_file",
+        "sp_php_playercashwithdrawal_all.source_file",
+        "sp_wagerenquiry_product_report_casino_0_bet_time.source_file",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.source_file",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.source_file",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.source_file"
+      ]
+    },
+    "i": {
+      "business_name": "Row Index",
+      "description": "Row index/counter in the export report.",
+      "tables": [
+        "sp_aff_product_report.i",
+        "sp_aff_product_report_sub_channel.i",
+        "sp_aff_promote_report.i",
+        "sp_aff_promote_report_sub_channel.i",
+        "sp_first_deposit_report.i",
+        "sp_individual_aff_report_ticket.i"
+      ]
+    },
+    "product_group": {
+      "business_name": "Product Group",
+      "description": "Category of the game product for bonus attribution.",
+      "tables": [
+        "sp_bonus_report_freebet_bonus.product_group",
+        "sp_bonus_report_product.product_group",
+        "sp_bonus_report_promo_code.product_group",
+        "sp_bonus_report_rebates.product_group",
+        "sp_bonus_report_reward.product_group"
+      ],
+      "allowed_values": [
+        {
+          "value": "General",
+          "description": "General/All Products"
+        },
+        {
+          "value": "Slot",
+          "description": "Slots"
+        },
+        {
+          "value": "Sportsbook",
+          "description": "Sports betting"
+        },
+        {
+          "value": "Casino",
+          "description": "Casino table games"
+        },
+        {
+          "value": "P2p",
+          "description": "P2P Poker"
+        }
+      ]
+    },
+    "no": {
+      "business_name": "Report Row",
+      "description": "Row number in the wager enquiry report. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.no",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.no",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.no",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.no"
+      ]
+    },
+    "other_id": {
+      "business_name": "Other ID",
+      "description": "Alternative identifier for the wager record. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.other_id",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.other_id",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.other_id",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.other_id"
+      ]
+    },
+    "id_from_merchant": {
+      "business_name": "Merchant ID",
+      "description": "Merchant-side transaction identifier. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.id_from_merchant",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.id_from_merchant",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.id_from_merchant",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.id_from_merchant"
+      ]
+    },
+    "platform": {
+      "business_name": "Platform",
+      "description": "Betting platform and device type description. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.platform",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.platform",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.platform",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.platform"
+      ]
+    },
+    "cur": {
+      "business_name": "Currency",
+      "description": "Currency code for the wager amount. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.cur",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.cur",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.cur",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.cur"
+      ]
+    },
+    "pot_amount": {
+      "business_name": "Pot Amount",
+      "description": "Total pot size (primarily in poker tables). Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.pot_amount",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.pot_amount",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.pot_amount",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.pot_amount"
+      ]
+    },
+    "kiosk_terminal": {
+      "business_name": "Kiosk Terminal",
+      "description": "Kiosk terminal identifier for wager. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.kiosk_terminal",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.kiosk_terminal",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.kiosk_terminal",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.kiosk_terminal"
+      ]
+    },
+    "jp_contribution": {
+      "business_name": "Jackpot Contribution",
+      "description": "Contribution to progressive jackpot. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.jp_contribution",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.jp_contribution",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.jp_contribution",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.jp_contribution"
+      ]
+    },
+    "jp_win": {
+      "business_name": "Jackpot Win",
+      "description": "Jackpot winnings amount. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.jp_win",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.jp_win",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.jp_win",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.jp_win"
+      ]
+    },
+    "outlet_code": {
+      "business_name": "Outlet Code",
+      "description": "Physical outlet or venue code. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.outlet_code",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.outlet_code",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.outlet_code",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.outlet_code"
+      ]
+    },
+    "game_id": {
+      "business_name": "Game ID",
+      "description": "Game-specific identifier. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.game_id",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.game_id",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.game_id",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.game_id"
+      ]
+    },
+    "jackpot_type": {
+      "business_name": "Jackpot Type",
+      "description": "Type of progressive jackpot. Common to all wager report tables.",
+      "tables": [
+        "sp_wagerenquiry_product_report_casino_0_bet_time.jackpot_type",
+        "sp_wagerenquiry_product_report_slot_0_bet_time.jackpot_type",
+        "sp_wagerenquiry_product_report_p2p_0_bet_time.jackpot_type",
+        "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.jackpot_type"
+      ]
+    },
+    "dp_bonus": {
+      "business_name": "Deposit Bonus",
+      "description": "Deposit-related bonus amount on per-ticket affiliate report.",
+      "tables": [
+        "sp_individual_aff_report_ticket.dp_bonus"
+      ]
+    },
+    "freebet_bonus": {
+      "business_name": "Freebet Bonus",
+      "description": "Freebet bonus amount on per-ticket affiliate report.",
+      "tables": [
+        "sp_individual_aff_report_ticket.freebet_bonus"
+      ]
+    },
+    "product_bonus": {
+      "business_name": "Product Bonus",
+      "description": "Product-related bonus amount on per-ticket affiliate report.",
+      "tables": [
+        "sp_individual_aff_report_ticket.product_bonus"
+      ]
+    },
+    "rebate": {
+      "business_name": "Rebate",
+      "description": "Rebate amount on per-ticket affiliate report.",
+      "tables": [
+        "sp_individual_aff_report_ticket.rebate"
+      ]
+    },
+    "cashback": {
+      "business_name": "Cashback",
+      "description": "Cashback amount on per-ticket affiliate report.",
+      "tables": [
+        "sp_individual_aff_report_ticket.cashback"
+      ]
+    },
+    "thv": {
+      "business_name": "Total Handle Value",
+      "description": "Total handle value for the ticket-level affiliate report.",
+      "tables": [
+        "sp_individual_aff_report_ticket.thv"
+      ]
+    }
+  }
+}

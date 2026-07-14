@@ -1,0 +1,129 @@
+{
+  "GGR": {
+    "business_name": "Gross Gaming Revenue",
+    "description": "House revenue from wagers. Calculated as total stake minus total player winnings across all wager report tables.",
+    "formula": "SUM(stake) - SUM(player_w_l)",
+    "columns": [
+      "sp_wagerenquiry_product_report_casino_0_bet_time.stake",
+      "sp_wagerenquiry_product_report_casino_0_bet_time.player_w_l",
+      "sp_wagerenquiry_product_report_slot_0_bet_time.stake",
+      "sp_wagerenquiry_product_report_slot_0_bet_time.player_w_l",
+      "sp_wagerenquiry_product_report_p2p_0_bet_time.stake",
+      "sp_wagerenquiry_product_report_p2p_0_bet_time.player_w_l",
+      "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.stake",
+      "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.player_w_l"
+    ]
+  },
+  "Turnover": {
+    "business_name": "Turnover",
+    "description": "Total amount wagered. Sum of all stakes across wager report tables. Also tracked at affiliate summary level.",
+    "formula": "SUM(stake)",
+    "columns": [
+      "sp_wagerenquiry_product_report_casino_0_bet_time.stake",
+      "sp_wagerenquiry_product_report_slot_0_bet_time.stake",
+      "sp_wagerenquiry_product_report_p2p_0_bet_time.stake",
+      "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.stake",
+      "sp_aff_product_report.turnover",
+      "sp_individual_aff_report_ticket.turnover"
+    ]
+  },
+  "Player Win/Loss": {
+    "business_name": "Player Win/Loss",
+    "description": "Net winnings or losses for players. Positive means player won, negative means player lost. Common across wager tables and affiliate reports.",
+    "formula": "SUM(player_w_l)",
+    "columns": [
+      "sp_wagerenquiry_product_report_casino_0_bet_time.player_w_l",
+      "sp_wagerenquiry_product_report_slot_0_bet_time.player_w_l",
+      "sp_wagerenquiry_product_report_p2p_0_bet_time.player_w_l",
+      "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.player_w_l",
+      "sp_aff_product_report.player_w_l"
+    ]
+  },
+  "Rake": {
+    "business_name": "House Rake",
+    "description": "Commission taken by the house on each wager. Used primarily to calculate affiliate commissions and net revenue.",
+    "formula": "SUM(rake)",
+    "columns": [
+      "sp_wagerenquiry_product_report_casino_0_bet_time.rake",
+      "sp_wagerenquiry_product_report_slot_0_bet_time.rake",
+      "sp_wagerenquiry_product_report_p2p_0_bet_time.rake",
+      "sp_wagerenquiry_sbk_product_report_sportsbook_0_bet_time.rake",
+      "sp_individual_aff_report_ticket.rake"
+    ]
+  },
+  "Bonus Issued": {
+    "business_name": "Total Bonus Issued",
+    "description": "Sum of all bonus amounts issued to players across all bonus type categories.",
+    "formula": "SUM(bonus_amount) across all sp_bonus_report_* tables",
+    "columns": [
+      "sp_bonus_report_freebet_bonus.bonus_amount",
+      "sp_bonus_report_product.bonus_amount",
+      "sp_bonus_report_promo_code.bonus_amount",
+      "sp_bonus_report_rebates.bonus_amount",
+      "sp_bonus_report_reward.bonus_amount"
+    ]
+  },
+  "Total Deposits": {
+    "business_name": "Total Player Deposits",
+    "description": "Sum of all player deposit transactions.",
+    "formula": "SUM(actual_amount) FROM sp_php_playercashdeposit_all WHERE status = 'Approved'",
+    "columns": [
+      "sp_php_playercashdeposit_all.actual_amount",
+      "sp_php_playercashdeposit_all.status"
+    ]
+  },
+  "Total Withdrawals": {
+    "business_name": "Total Player Withdrawals",
+    "description": "Sum of all player withdrawal transactions.",
+    "formula": "SUM(actual_amount) FROM sp_php_playercashwithdrawal_all WHERE status = 'Approved'",
+    "columns": [
+      "sp_php_playercashwithdrawal_all.actual_amount",
+      "sp_php_playercashwithdrawal_all.status"
+    ]
+  },
+  "Deposit to Withdrawal Ratio": {
+    "business_name": "Deposit-Withdrawal Ratio",
+    "description": "Ratio of total approved deposits to total approved withdrawals.",
+    "formula": "SUM(deposits.actual_amount) / SUM(withdrawals.actual_amount)",
+    "columns": [
+      "sp_php_playercashdeposit_all.actual_amount",
+      "sp_php_playercashwithdrawal_all.actual_amount"
+    ]
+  },
+  "Affiliate Commission": {
+    "business_name": "Affiliate Commission",
+    "description": "Final commission payout to affiliate partners based on revenue share, CPA, or hybrid models.",
+    "formula": "SUM(final_commission)",
+    "columns": [
+      "sp_individual_aff_report_ticket.final_commission"
+    ]
+  },
+  "Click-to-Deposit Conversion": {
+    "business_name": "Click-to-Deposit Conversion Rate",
+    "description": "Percentage of affiliate clicks that resulted in a new deposit.",
+    "formula": "COUNT(new_deposit) / COUNT(click)",
+    "columns": [
+      "sp_aff_promote_report.click",
+      "sp_aff_promote_report.new_deposit"
+    ]
+  },
+  "Company Win/Loss": {
+    "business_name": "Company Win/Loss (House P/L)",
+    "description": "Net profit or loss for the company/house. Opposite of player_w_l, so positive means house profit.",
+    "formula": "SUM(company_w_l)",
+    "columns": [
+      "sp_individual_aff_report_ticket.company_w_l"
+    ]
+  },
+  "Net Revenue": {
+    "business_name": "Net Revenue",
+    "description": "GGR minus bonuses issued and affiliate commissions. Represents true revenue after marketing costs.",
+    "formula": "GGR - (Bonus Issued + Affiliate Commission)",
+    "columns": [
+      "sp_wagerenquiry_product_report_casino_0_bet_time.stake",
+      "sp_wagerenquiry_product_report_casino_0_bet_time.player_w_l",
+      "sp_bonus_report_product.bonus_amount",
+      "sp_individual_aff_report_ticket.final_commission"
+    ]
+  }
+}
