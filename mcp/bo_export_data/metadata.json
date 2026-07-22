@@ -709,6 +709,10 @@
         {
           "value": "P2p",
           "description": "P2P Poker"
+        },
+        {
+          "value": "EBingo",
+          "description": "EBingo table games"
         }
       ]
     },

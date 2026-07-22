@@ -137,7 +137,8 @@
         {"value": "Sportsbook", "description": "Sports"},
         {"value": "Casino", "description": "Casino"},
         {"value": "Slots", "description": "Slots"},
-        {"value": "P2p", "description": "Poker"}
+        {"value": "P2p", "description": "Poker"},
+        {"value": "EBingo", "description": "EBingo"}
       ]
     },
 
